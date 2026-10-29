@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riya ✨ | Creative Developer & CS + AI Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & DESIGN SYSTEM
+       ========================================================================== */
+    :root {
+      --bg-dark: #07050d;
+      --bg-surface: #0e0a1a;
+      --bg-card: rgba(20, 14, 38, 0.65);
+      --bg-card-hover: rgba(30, 20, 56, 0.85);
+      
+      --purple-electric: #a855f7;
+      --purple-glow: #9333ea;
+      --purple-deep: #581c87;
+      --lavender-neon: #d8b4fe;
+      --lavender-soft: #e9d5ff;
+      --pink-neon: #f43f5e;
+      --pink-hot: #f72585;
+      --cyan-bright: #38bdf8;
+      --cyan-mint: #4ade80;
+      
+      --text-main: #fdfcff;
+      --text-muted: #a79fb9;
+      --text-subtle: #73698b;
+      
+      --border-glass: rgba(216, 180, 254, 0.14);
+      --border-glass-hover: rgba(247, 37, 133, 0.45);
+      --border-glow: rgba(168, 85, 247, 0.35);
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      
+      --font-display: 'Syne', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --shadow-glow-purple: 0 0 35px rgba(168, 85, 247, 0.3);
+      --shadow-glow-pink: 0 0 35px rgba(247, 37, 133, 0.3);
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      position: relative;
+      background-color: var(--bg-dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 90% 40%, rgba(247, 37, 133, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 10% 70%, rgba(56, 189, 248, 0.07) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* Subtle Futuristic Background Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(to right, rgba(216, 180, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(216, 180, 254, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Floating Orbs (CSS Keyframe Animations) */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      top: 10%;
+      left: -5%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, var(--purple-electric), transparent 70%);
+      animation-duration: 20s;
+    }
+
+    .orb-2 {
+      top: 45%;
+      right: -8%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--pink-hot), transparent 70%);
+      animation-duration: 25s;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      bottom: 10%;
+      left: 20%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #7209b7, transparent 70%);
+      animation-duration: 22s;
+      animation-delay: -10s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(60px, 40px) scale(1.12);
+      }
+      100% {
+        transform: translate(-40px, 80px) scale(0.95);
+      }
+    }
+
+    /* Selection & Scrollbar */
+    ::selection {
+      background: var(--pink-hot);
+      color: #ffffff;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(168, 85, 247, 0.4);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--pink-hot);
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(7, 5, 13, 0.75);
+      border-bottom: 1px solid var(--border-glass);
+      transition: all 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--purple-electric), var(--pink-hot));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
+      color: #fff;
+    }
+
+    .logo-status {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: rgba(216, 180, 254, 0.1);
+      border: 1px solid var(--border-glass);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      color: var(--lavender-neon);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan-mint);
+      box-shadow: 0 0 8px var(--cyan-mint);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      position: relative;
+      padding: 0.3rem 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple-electric), var(--pink-hot));
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(247, 37, 133, 0.2));
+      border: 1px solid rgba(216, 180, 254, 0.3);
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--lavender-soft);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-cta:hover {
+      background: linear-gradient(135deg, var(--purple-electric), var(--pink-hot));
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 0 25px rgba(247, 37, 133, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 0 4rem;
+      position: relative;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(216, 180, 254, 0.25);
+      border-radius: var(--radius-full);
+      padding: 0.45rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lavender-soft);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+      animation: floatPill 4s ease-in-out infinite;
+    }
+
+    @keyframes floatPill {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .hero-title-container {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subhead {
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--lavender-neon);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 11vw, 8.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      margin: 0;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    .name-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 25%, #f43f5e 55%, #a855f7 80%, #38bdf8 100%);
+      background-size: 250% 250%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s ease infinite;
+      filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.45));
+      display: inline-block;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Badges in Hero */
+    .floating-item {
+      position: absolute;
+      background: rgba(14, 10, 26, 0.8);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--shadow-glow-purple);
+      pointer-events: none;
+      animation: floatBadge 6s ease-in-out infinite;
+    }
+
+    .floating-skate {
+      top: -10%;
+      right: 5%;
+      border-color: rgba(247, 37, 133, 0.4);
+      animation-delay: -1s;
+    }
+
+    .floating-code {
+      bottom: 5%;
+      left: 2%;
+      border-color: rgba(56, 189, 248, 0.4);
+      animation-delay: -3s;
+    }
+
+    .floating-laugh {
+      top: 55%;
+      right: -2%;
+      border-color: rgba(168, 85, 247, 0.4);
+      animation-delay: -2s;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(2deg); }
+    }
+
+    .hero-tagline {
+      max-width: 720px;
+      font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 1.8rem auto 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .hero-tagline strong {
+      color: var(--text-main);
+      font-weight: 700;
+      text-shadow: 0 0 20px rgba(216, 180, 254, 0.4);
+    }
+
+    .hero-tagline .highlight-pink {
+      color: var(--pink-hot);
+    }
+
+    .hero-tagline .highlight-purple {
+      color: var(--lavender-neon);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+    }
+
+    .btn-primary {
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--purple-electric), var(--pink-hot));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.45);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 50px rgba(247, 37, 133, 0.65);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-secondary {
+      text-decoration: none;
+      background: rgba(216, 180, 254, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(216, 180, 254, 0.12);
+      border-color: var(--lavender-neon);
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(216, 180, 254, 0.2);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text-subtle);
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    .scroll-indicator:hover {
+      color: var(--lavender-neon);
+    }
+
+    .mouse-icon {
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(216, 180, 254, 0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .mouse-wheel {
+      width: 4px;
+      height: 7px;
+      background: var(--pink-hot);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px var(--pink-hot);
+      animation: mouseScroll 1.8s infinite;
+    }
+
+    @keyframes mouseScroll {
+      0% { top: 6px; opacity: 1; }
+      80% { top: 20px; opacity: 0; }
+      100% { top: 6px; opacity: 0; }
+    }
+
+    /* Infinitely Moving Ticker */
+    .ticker-bar {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      overflow: hidden;
+      background: rgba(20, 14, 38, 0.7);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 0.9rem 0;
+      white-space: nowrap;
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 2rem;
+      animation: tickerRun 25s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lavender-neon);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .ticker-dot {
+      color: var(--pink-hot);
+      font-size: 1rem;
+    }
+
+    @keyframes tickerRun {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS
+       ========================================================================== */
+    .section {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--pink-hot);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: var(--text-main);
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--lavender-neon), var(--purple-electric), var(--pink-hot));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-top: 0.75rem;
+    }
+
+    /* ==========================================================================
+       ABOUT ME SECTION (BENTO GRID)
+       ========================================================================== */
+    .about-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Glassmorphism Card Core */
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .bento-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(216, 180, 254, 0.2), transparent 50%, rgba(247, 37, 133, 0.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-glass-hover);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(168, 85, 247, 0.2);
+    }
+
+    .card-profile {
+      grid-column: span 7;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-profile-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .avatar-art {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #7928ca, #ff0080);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .avatar-sparkle {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 1.1rem;
+      animation: spinSlow 8s linear infinite;
+    }
+
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .college-chip {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--cyan-bright);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .card-text strong {
+      color: var(--lavender-soft);
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .meta-pill {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      padding: 0.3rem 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      color: var(--lavender-soft);
+    }
+
+    .card-metrics {
+      grid-column: span 5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1.25rem;
+    }
+
+    .stat-box {
+      background: rgba(14, 10, 26, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-box:hover {
+      background: rgba(168, 85, 247, 0.12);
+      border-color: var(--lavender-neon);
+      transform: scale(1.03);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--lavender-neon), var(--pink-hot));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-philosophy {
+      grid-column: span 6;
+      background: linear-gradient(135deg, rgba(30, 18, 55, 0.7), rgba(20, 14, 38, 0.65));
+    }
+
+    .card-journey {
+      grid-column: span 6;
+      background: linear-gradient(135deg, rgba(20, 14, 38, 0.65), rgba(40, 15, 45, 0.6));
+    }
+
+    .badge-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      filter: drop-shadow(0 0 12px rgba(247, 37, 133, 0.4));
+    }
+
+    /* ==========================================================================
+       SKILLS SECTION (INTERACTIVE SHOWCASE)
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      position: relative;
+      backdrop-filter: blur(14px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .skill-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--purple-electric), var(--pink-hot), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--border-glass-hover);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.25);
+    }
+
+    .skill-card:hover::after {
+      opacity: 1;
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-md);
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(216, 180, 254, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon-box {
+      transform: rotate(6deg) scale(1.1);
+      background: rgba(247, 37, 133, 0.2);
+      border-color: var(--pink-hot);
+    }
+
+    .skill-level-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .level-beginner {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan-bright);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .level-elite {
+      background: rgba(247, 37, 133, 0.15);
+      color: var(--pink-hot);
+      border: 1px solid rgba(247, 37, 133, 0.4);
+      box-shadow: 0 0 10px rgba(247, 37, 133, 0.2);
+    }
+
+    .level-pro {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--lavender-neon);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+    }
+
+    .skill-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .skill-bar-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--purple-electric), var(--pink-hot));
+      position: relative;
+    }
+
+    .fill-python { width: 42%; }
+    .fill-ai { width: 38%; }
+    .fill-vibe { width: 98%; }
+    .fill-humour { width: 100%; }
+
+    .skill-footer-note {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       HOBBIES SECTION (CREATIVE ENERGY)
+       ========================================================================== */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    .hobby-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--lavender-neon);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), var(--shadow-glow-purple);
+    }
+
+    .hobby-skating {
+      grid-column: span 6;
+      background: radial-gradient(circle at top right, rgba(247, 37, 133, 0.15), transparent 70%), var(--bg-card);
+    }
+
+    .hobby-sketching {
+      grid-column: span 6;
+      background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.18), transparent 70%), var(--bg-card);
+    }
+
+    .hobby-music {
+      grid-column: span 6;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 70%), var(--bg-card);
+    }
+
+    .hobby-laugh {
+      grid-column: span 6;
+      background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.18), transparent 70%), var(--bg-card);
+    }
+
+    .hobby-emoji-large {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .hobby-card:hover .hobby-emoji-large {
+      transform: scale(1.2) rotate(-8deg);
+    }
+
+    .hobby-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+    }
+
+    .hobby-quote {
+      font-style: italic;
+      color: var(--lavender-neon);
+      font-size: 0.88rem;
+      margin-top: 1rem;
+      border-left: 2px solid var(--pink-hot);
+      padding-left: 0.75rem;
+    }
+
+    /* ==========================================================================
+       PURE CSS INTERACTIVE VIBE DECK (NO JAVASCRIPT NEEDED)
+       ========================================================================== */
+    .vibe-deck-wrapper {
+      margin-top: 5rem;
+      background: rgba(14, 10, 26, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .vibe-deck-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .vibe-deck-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .vibe-deck-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--lavender-neon);
+      margin-top: 0.3rem;
+    }
+
+    /* Radio Inputs for Pure CSS Tabs */
+    .tab-input {
+      display: none;
+    }
+
+    .tab-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-label {
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+    }
+
+    .tab-label:hover {
+      color: var(--text-main);
+      border-color: var(--lavender-neon);
+      background: rgba(216, 180, 254, 0.1);
+    }
+
+    #tab1:checked ~ .tab-controls label[for="tab1"],
+    #tab2:checked ~ .tab-controls label[for="tab2"],
+    #tab3:checked ~ .tab-controls label[for="tab3"] {
+      background: linear-gradient(135deg, var(--purple-electric), var(--pink-hot));
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(247, 37, 133, 0.4);
+    }
+
+    .tab-content-area {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .tab-pane {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+      background: rgba(20, 14, 38, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+    }
+
+    #tab1:checked ~ .tab-content-area #pane1,
+    #tab2:checked ~ .tab-content-area #pane2,
+    #tab3:checked ~ .tab-content-area #pane3 {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      animation: tabFadeIn 0.4s ease forwards;
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .terminal-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    .terminal-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      color: var(--text-muted);
+    }
+
+    .terminal-prompt {
+      color: var(--pink-hot);
+      font-weight: 700;
+    }
+
+    .music-track-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .music-track-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .track-disc {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--purple-electric), var(--pink-hot), var(--cyan-bright), var(--purple-electric));
+      animation: spinDisc 6s linear infinite;
+    }
+
+    @keyframes spinDisc {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================================
+       LIFE GOAL SECTION (THE EMOTIONAL CENTERPIECE)
+       ========================================================================== */
+    .goal-section {
+      padding: 9rem 0;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .goal-backdrop-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(247, 37, 133, 0.18) 0%, rgba(147, 51, 234, 0.15) 45%, transparent 70%);
+      filter: blur(80px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: pulseAura 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseAura {
+      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .goal-card-main {
+      background: rgba(18, 12, 34, 0.75);
+      border: 2px solid rgba(216, 180, 254, 0.25);
+      border-radius: 36px;
+      padding: 5rem 2.5rem;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(168, 85, 247, 0.35);
+      position: relative;
+      z-index: 1;
+      max-width: 1060px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .goal-card-main::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(247, 37, 133, 0.08) 0%, transparent 60%);
+      animation: spinSlow 30s linear infinite;
+      pointer-events: none;
+    }
+
+    .goal-question {
+      font-family: var(--font-mono);
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: var(--lavender-neon);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .goal-giant-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 8.5vw, 6.8rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .headline-highlight {
+      display: block;
+      background: linear-gradient(135deg, #ffffff 0%, #f72585 35%, #d8b4fe 70%, #4cc9f0 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shineGradient 6s linear infinite;
+      filter: drop-shadow(0 0 35px rgba(247, 37, 133, 0.6));
+    }
+
+    @keyframes shineGradient {
+      to { background-position: 200% center; }
+    }
+
+    .goal-message {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .goal-message strong {
+      color: var(--text-main);
+    }
+
+    .goal-message .accent-text {
+      color: var(--lavender-neon);
+      font-weight: 600;
+    }
+
+    .goal-values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+      text-align: left;
+    }
+
+    .goal-value-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+    }
+
+    .goal-value-card:hover {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: var(--pink-hot);
+      transform: translateY(-4px);
+    }
+
+    .goal-value-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .goal-value-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .goal-value-desc {
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       FUN SECTION (WITTY & RELATABLE CONFESSIONS)
+       ========================================================================== */
+    .fun-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .fun-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .fun-card:hover {
+      transform: translateY(-8px) rotate(1deg);
+      border-color: var(--pink-hot);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247, 37, 133, 0.3);
+    }
+
+    .fun-card:nth-child(even):hover {
+      transform: translateY(-8px) rotate(-1deg);
+    }
+
+    .fun-tag-bubble {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: rgba(247, 37, 133, 0.15);
+      color: var(--pink-hot);
+      border: 1px solid rgba(247, 37, 133, 0.3);
+      margin-bottom: 1.25rem;
+      align-self: flex-start;
+    }
+
+    .fun-card-headline {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .fun-card-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .fun-footer-verdict {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--lavender-neon);
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(216, 180, 254, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ==========================================================================
+       FOOTER & FINALE
+       ========================================================================== */
+    .footer {
+      padding: 6rem 0 3rem;
+      border-top: 1px solid var(--border-glass);
+      background: rgba(6, 4, 11, 0.95);
+      position: relative;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .final-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      max-width: 850px;
+    }
+
+    .final-quote span {
+      background: linear-gradient(135deg, var(--lavender-neon), var(--pink-hot), var(--cyan-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: var(--pink-hot);
+    }
+
+    .back-to-top {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lavender-soft);
+      background: rgba(216, 180, 254, 0.08);
+      border: 1px solid var(--border-glass);
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 3rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: var(--purple-electric);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      font-size: 0.82rem;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+    }
+
+    .copyright strong {
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       KEYFRAME ANIMATIONS
+       ========================================================================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       RESPONSIVENESS & ACCESSIBILITY
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .card-profile { grid-column: span 12; }
+      .card-metrics { grid-column: span 12; }
+      .card-philosophy { grid-column: span 12; }
+      .card-journey { grid-column: span 12; }
+      .hobby-skating, .hobby-sketching, .hobby-music, .hobby-laugh { grid-column: span 12; }
+      
+      .floating-item { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section { padding: 5rem 0; }
+      .hero-section { padding: 6.5rem 0 3rem; }
+      .goal-card-main { padding: 3rem 1.5rem; }
+      .vibe-deck-wrapper { padding: 1.5rem; }
+    }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ambient-orb { display: none; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- ==========================================================================
+       STICKY GLASSMORPHIC NAVBAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-logo" aria-label="Riya Portfolio Home">
+        <span class="logo-badge">R</span>
+        <span>RIYA</span>
+        <span class="logo-status">
+          <span class="status-dot"></span>
+          B.Tech CS & AI
+        </span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#hobbies">Hobbies</a></li>
+          <li><a href="#goal">Life Goal</a></li>
+          <li><a href="#fun">Lore</a></li>
+        </ul>
+      </nav>
+
+      <a href="#goal" class="nav-cta">
+        <span>Say Hi</span>
+        <span>✨</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        
+        <div class="hero-pill">
+          <span>🚀 Rishihood University</span>
+          <span>•</span>
+          <span>First-Year CS & AI Student</span>
+        </div>
+
+        <div class="hero-title-container">
+          <!-- Floating Playful Badges -->
+          <div class="floating-item floating-skate">
+            <span>🛹</span>
+            <span>Skating through chaos</span>
+          </div>
+          <div class="floating-item floating-code">
+            <span>⚡</span>
+            <span>Vibe coding in Python</span>
+          </div>
+          <div class="floating-item floating-laugh">
+            <span>🎭</span>
+            <span>Laughing at stack traces</span>
+          </div>
+
+          <div class="hero-subhead">// WELCOME TO MY CORNER</div>
+          <h1 class="hero-headline">
+            HI, I'M <span class="name-gradient">RIYA</span>
+          </h1>
+        </div>
+
+        <p class="hero-tagline">
+          “Coding my way through life, skating through chaos, and making 
+          <span class="highlight-pink">serious situations funny</span>.”
+        </p>
+
+        <div class="hero-actions">
+          <a href="#about" class="btn-primary">
+            <span>Explore My World</span>
+            <span>↓</span>
+          </a>
+          <a href="#goal" class="btn-secondary">
+            <span>The Real Goal</span>
+            <span>💜</span>
+          </a>
+        </div>
+
+        <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
+          <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
+          </div>
+          <span>SCROLL</span>
+        </a>
+
+      </div>
+
+      <!-- Live Moving Ticker -->
+      <div class="ticker-bar" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-item"><span>B.Tech CS & AI @ Rishihood</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>18 Years Old</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Vibe Coding Enthusiast</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Skateboard Cruiser</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Notebook Doodler</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Unapologetic Joke Maker</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Future Happy Human</span> <span class="ticker-dot">✦</span></div>
+          <!-- Repeated for smooth infinite scroll -->
+          <div class="ticker-item"><span>B.Tech CS & AI @ Rishihood</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>18 Years Old</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Vibe Coding Enthusiast</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Skateboard Cruiser</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Notebook Doodler</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Unapologetic Joke Maker</span> <span class="ticker-dot">✦</span></div>
+          <div class="ticker-item"><span>Future Happy Human</span> <span class="ticker-dot">✦</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION (BENTO GRID)
+         ========================================================================== -->
+    <section id="about" class="section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">// 01 • WHO IS RIYA?</div>
+          <h2 class="section-title">Freshman brain, <span>creative soul</span>.</h2>
+          <p class="section-desc">An honest snapshot of who I am, where I study, and why I believe humor and code belong in the exact same sentence.</p>
+        </div>
+
+        <div class="about-bento">
+          
+          <!-- Bento 1: Main Persona -->
+          <div class="bento-card card-profile">
+            <div>
+              <div class="card-profile-header">
+                <div class="avatar-wrapper">
+                  <div class="avatar-art">✨</div>
+                  <div class="avatar-sparkle">🌸</div>
+                </div>
+                <div class="college-chip">
+                  <span>🏛️ Rishihood University</span>
+                </div>
+              </div>
+
+              <h3 class="card-title">18, curious, and building my future one error at a time.</h3>
+              <p class="card-text">
+                I'm a <strong>first-year B.Tech student</strong> majoring in <strong>Computer Science & Artificial Intelligence</strong> at Rishihood University. While everyone else is busy writing overly serious resumes, I'm here embracing the authentic beginner journey: asking wild questions in lecture halls, experimenting with algorithms, and bringing good energy everywhere I go.
+              </p>
+            </div>
+
+            <div class="meta-pills">
+              <span class="meta-pill">🎓 Class of 2028</span>
+              <span class="meta-pill">🤖 CS + AI Major</span>
+              <span class="meta-pill">🛹 Skatepark Regular</span>
+              <span class="meta-pill">🎨 Visual Thinker</span>
+            </div>
+          </div>
+
+          <!-- Bento 2: Honest Metrics -->
+          <div class="bento-card card-metrics">
+            <div class="stat-box">
+              <div class="stat-num">18</div>
+              <div class="stat-label">Years on this planet</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">01</div>
+              <div class="stat-label">Year in B.Tech CS&AI</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">04</div>
+              <div class="stat-label">Wheels on my skateboard</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Vibe coding accuracy</div>
+            </div>
+          </div>
+
+          <!-- Bento 3: Philosophy -->
+          <div class="bento-card card-philosophy">
+            <span class="badge-icon">💡</span>
+            <h3 class="card-title">The Vibe Coding Doctrine</h3>
+            <p class="card-text">
+              I believe code shouldn't feel like a clinical chore. Put on a killer playlist, keep the lighting purple, trust your instincts, and iterate until the screen looks like magic. If an error throws a fit, there's always a punchline waiting to defuse it.
+            </p>
+          </div>
+
+          <!-- Bento 4: College Journey -->
+          <div class="bento-card card-journey">
+            <span class="badge-icon">🏛️</span>
+            <h3 class="card-title">The Rishihood Chapter</h3>
+            <p class="card-text">
+              College is where wild ideas turn into real skills. From late-night math derivations to exploring artificial intelligence models on campus, I'm soaking in every lecture, sketching in notebook margins, and cruising across campus pathways.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS SECTION
+         ========================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">// 02 • THE TOOLKIT</div>
+          <h2 class="section-title">Skills & <span>honest superpowers</span>.</h2>
+          <p class="section-desc">No corporate fluff or pretend 10-year experience. Here is exactly what I know and where I'm leveling up every single day.</p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <!-- Skill 1 -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon-box">🐍</div>
+              <span class="skill-level-tag level-beginner">Beginner / Learning</span>
+            </div>
+            <h3 class="skill-name">Basic Python</h3>
+            <p class="skill-desc">
+              Conditionals, loops, functions, lists, and building small scripts. If my terminal prints what I expected on the very first run, I immediately get suspicious.
+            </p>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-python"></div>
+            </div>
+            <div class="skill-footer-note">
+              <span>Proficiency: Learning fast</span>
+              <span>42%</span>
+            </div>
+          </div>
+
+          <!-- Skill 2 -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon-box">🤖</div>
+              <span class="skill-level-tag level-beginner">Curious Explorer</span>
+            </div>
+            <h3 class="skill-name">Basic AI</h3>
+            <p class="skill-desc">
+              Understanding neural network fundamentals in class, prompting models to brainstorm ideas, and being endlessly fascinated by how math turns into intelligence.
+            </p>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-ai"></div>
+            </div>
+            <div class="skill-footer-note">
+              <span>Foundation: Building daily</span>
+              <span>38%</span>
+            </div>
+          </div>
+
+          <!-- Skill 3 -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon-box">✨</div>
+              <span class="skill-level-tag level-elite">Pure Natural</span>
+            </div>
+            <h3 class="skill-name">Vibe Coding</h3>
+            <p class="skill-desc">
+              The rare skill of setting up the immaculate neon environment, putting on synth beats, and turning caffeine and curiosity into functioning interfaces.
+            </p>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-vibe"></div>
+            </div>
+            <div class="skill-footer-note">
+              <span>Aura & Momentum</span>
+              <span>98%</span>
+            </div>
+          </div>
+
+          <!-- Skill 4 -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon-box">🎭</div>
+              <span class="skill-level-tag level-elite">Black Belt</span>
+            </div>
+            <h3 class="skill-name">Making Things Funnier</h3>
+            <p class="skill-desc">
+              When assignment deadlines hit 11:59 PM or a build breaks in front of everyone, I am the human who cracks the joke that reminds us all to breathe.
+            </p>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-humour"></div>
+            </div>
+            <div class="skill-footer-note">
+              <span>Comic Timing</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HOBBIES SECTION
+         ========================================================================== -->
+    <section id="hobbies" class="section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">// 03 • OFF-SCREEN ENERGY</div>
+          <h2 class="section-title">Beyond the <span>compiler</span>.</h2>
+          <p class="section-desc">What keeps my mind sharp, my imagination alive, and my feet moving when the laptop lid closes.</p>
+        </div>
+
+        <div class="hobbies-grid">
+          
+          <!-- Hobby 1: Skating -->
+          <div class="hobby-card hobby-skating">
+            <div>
+              <span class="hobby-emoji-large">🛹</span>
+              <h3 class="hobby-title">Skating Through Chaos</h3>
+              <p class="card-text">
+                There is nothing like the sound of wheels rolling over fresh asphalt. Skating taught me that falling down isn’t failing—it’s just the kinetic tax you pay before you land the clean kick-turn.
+              </p>
+            </div>
+            <p class="hobby-quote">“Balance is an active choice, whether on a deck or in college life.”</p>
+          </div>
+
+          <!-- Hobby 2: Sketching -->
+          <div class="hobby-card hobby-sketching">
+            <div>
+              <span class="hobby-emoji-large">🎨</span>
+              <h3 class="hobby-title">Visual Sketching & Doodling</h3>
+              <p class="card-text">
+                From quick pencil sketches on assignment margins to conceptual character doodles, drawing is how I decompress and give tangible shape to abstract thoughts.
+              </p>
+            </div>
+            <p class="hobby-quote">“If you can sketch it on paper, you can code it on a screen.”</p>
+          </div>
+
+          <!-- Hobby 3: Music -->
+          <div class="hobby-card hobby-music">
+            <div>
+              <span class="hobby-emoji-large">🎧</span>
+              <h3 class="hobby-title">Music as a Fuel Source</h3>
+              <p class="card-text">
+                Headphones on, volume dial up. My playlist jumps wildly between dreamy bedroom pop, high-tempo synthwave, and chill hip-hop instrumentals that keep the code flowing.
+              </p>
+            </div>
+            <p class="hobby-quote">“No good code was ever written in complete silence.”</p>
+          </div>
+
+          <!-- Hobby 4: Making People Laugh -->
+          <div class="hobby-card hobby-laugh">
+            <div>
+              <span class="hobby-emoji-large">😂</span>
+              <h3 class="hobby-title">Making People Laugh</h3>
+              <p class="card-text">
+                Life is simply too short to take everything seriously. Spotting the funny side of stressful situations, teasing awkward bugs, and spreading smiles is my favorite hobby.
+              </p>
+            </div>
+            <p class="hobby-quote">“Laughter is the ultimate debugging tool for life.”</p>
+          </div>
+
+        </div>
+
+        <!-- ==========================================================================
+             PURE CSS INTERACTIVE VIBE DECK (Tabs without JavaScript!)
+             ========================================================================== -->
+        <div class="vibe-deck-wrapper">
+          <input type="radio" name="vibe-deck" id="tab1" class="tab-input" checked>
+          <input type="radio" name="vibe-deck" id="tab2" class="tab-input">
+          <input type="radio" name="vibe-deck" id="tab3" class="tab-input">
+
+          <div class="vibe-deck-header">
+            <h3 class="vibe-deck-title">Interactive Vibe Deck</h3>
+            <p class="vibe-deck-subtitle">Pure CSS interactivity • Click tabs to inspect live stats</p>
+          </div>
+
+          <div class="tab-controls">
+            <label for="tab1" class="tab-label"><span>📅</span> Daily College Loop</label>
+            <label for="tab2" class="tab-label"><span>🎵</span> Heavy Rotation Tracks</label>
+            <label for="tab3" class="tab-label"><span>🎨</span> Creative Sketch Log</label>
+          </div>
+
+          <div class="tab-content-area">
+            
+            <!-- Pane 1 -->
+            <div id="pane1" class="tab-pane">
+              <ul class="terminal-list">
+                <li>
+                  <span class="terminal-prompt">08:30 AM →</span>
+                  <span>Waking up, promising myself I will write zero bugs today.</span>
+                </li>
+                <li>
+                  <span class="terminal-prompt">10:00 AM →</span>
+                  <span>Rishihood CS lecture: learning algorithms while doodling cyber-skaters.</span>
+                </li>
+                <li>
+                  <span class="terminal-prompt">02:30 PM →</span>
+                  <span>Skating down the campus slope, dodging pebbles with surgical precision.</span>
+                </li>
+                <li>
+                  <span class="terminal-prompt">07:00 PM →</span>
+                  <span>Vibe coding Python scripts, listening to music, laughing at syntax errors.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pane 2 -->
+            <div id="pane2" class="tab-pane">
+              <div class="music-track-item">
+                <div class="music-track-info">
+                  <div class="track-disc"></div>
+                  <div>
+                    <strong style="color: var(--text-main);">Midnight City</strong>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">M83 • Maximum Skate Energy</div>
+                  </div>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--lavender-neon);">ON LOOP</span>
+              </div>
+              <div class="music-track-item">
+                <div class="music-track-info">
+                  <div class="track-disc" style="animation-duration: 4s;"></div>
+                  <div>
+                    <strong style="color: var(--text-main);">Space Song</strong>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Beach House • Python Vibe Coding</div>
+                  </div>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--lavender-neon);">FOCUS MODE</span>
+              </div>
+            </div>
+
+            <!-- Pane 3 -->
+            <div id="pane3" class="tab-pane">
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+                Currently filling up sketchbook <strong>#04</strong> with futuristic retro streetwear, minimalist portraits, neon-lit city corridors, and cute mascots inspired by Python loops. Sketching is where my eyes reset after staring at terminal screens.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LIFE GOAL SECTION (THE HEART OF THE PORTFOLIO)
+         ========================================================================== -->
+    <section id="goal" class="goal-section">
+      <div class="goal-backdrop-glow"></div>
+      
+      <div class="container">
+        <div class="goal-card-main">
+          
+          <div class="goal-question">✦ THE ULTIMATE QUESTION ✦</div>
+          
+          <h2 class="goal-giant-headline">
+            WHAT DO I WANT TO BECOME?
+            <span class="headline-highlight">A HAPPY PERSON.</span>
+          </h2>
+
+          <div class="goal-message">
+            <p>
+              In a tech world obsessed with titles, speedruns, and sleepless grinding, my North Star is radically simple. 
+              I want to become someone who <strong>learns fearlessly</strong>, enjoys every stage of life, makes the people around her 
+              <span class="accent-text">laugh until their stomachs hurt</span>, and goes to sleep with a peaceful, grateful heart.
+            </p>
+            <br>
+            <p>
+              Code is the craft. Artificial intelligence is the playground. Skating is the freedom. But <strong>genuine happiness</strong> is the destination.
+            </p>
+          </div>
+
+          <div class="goal-values-grid">
+            <div class="goal-value-card">
+              <div class="goal-value-icon">🌱</div>
+              <div class="goal-value-title">Keep Learning</div>
+              <div class="goal-value-desc">Stay humble, stay curious, and ask the beginner questions.</div>
+            </div>
+            <div class="goal-value-card">
+              <div class="goal-value-icon">🛹</div>
+              <div class="goal-value-title">Enjoy The Ride</div>
+              <div class="goal-value-desc">The college years only happen once—ride through every bump.</div>
+            </div>
+            <div class="goal-value-card">
+              <div class="goal-value-icon">✨</div>
+              <div class="goal-value-title">Spread Laughter</div>
+              <div class="goal-value-desc">Leave every room a little lighter and happier than you found it.</div>
+            </div>
+            <div class="goal-value-card">
+              <div class="goal-value-icon">💜</div>
+              <div class="goal-value-title">Stay Happy</div>
+              <div class="goal-value-desc">Because being content with yourself is the greatest flex of all.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FUN SECTION (RELATABLE DEV & LIFE CONFESSIONS)
+         ========================================================================== -->
+    <section id="fun" class="section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">// 04 • UNCENSORED LORE</div>
+          <h2 class="section-title">Freshman <span>confessions</span>.</h2>
+          <p class="section-desc">Because if you can’t laugh at your own struggles, you’re missing half the fun of computer science.</p>
+        </div>
+
+        <div class="fun-grid">
+          
+          <!-- Card 1 -->
+          <div class="fun-card">
+            <div>
+              <span class="fun-tag-bubble">🤖 AI EXPERIMENT</span>
+              <h3 class="fun-card-headline">The 45-Minute AI Debate</h3>
+              <p class="fun-card-body">
+                Opened an LLM prompt to understand gradient descent for college. Ended up having a deeply heated 45-minute philosophical argument over whether cereal counts as soup.
+              </p>
+            </div>
+            <div class="fun-footer-verdict">
+              <span>Status:</span> <strong>Cereal is a cold breakfast stew.</strong>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="fun-card">
+            <div>
+              <span class="fun-tag-bubble">🐍 PYTHON STRUGGLES</span>
+              <h3 class="fun-card-headline">The Mysterious Indentation Error</h3>
+              <p class="fun-card-body">
+                Stared at line 34 for 20 minutes wondering why Python hated me. Turned out to be 3 spaces instead of 4. Emotional recovery took approximately 3 to 5 business days.
+              </p>
+            </div>
+            <div class="fun-footer-verdict">
+              <span>Resolution:</span> <strong>Spacebar is my true arch-nemesis.</strong>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="fun-card">
+            <div>
+              <span class="fun-tag-bubble">🛹 SKATE PHYSICS</span>
+              <h3 class="fun-card-headline">Gravity vs Riya: Round 12</h3>
+              <p class="fun-card-body">
+                Hit a microscopic pebble that wasn’t in my mental render pipeline. Fell down, but immediately turned it into a theatrical breakdance pose so bystanders would applaud.
+              </p>
+            </div>
+            <div class="fun-footer-verdict">
+              <span>Recovery Rating:</span> <strong>10/10 for dramatic flair.</strong>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="fun-card">
+            <div>
+              <span class="fun-tag-bubble">🎓 CAMPUS REALNESS</span>
+              <h3 class="fun-card-headline">The “One Last Line of Code” Lie</h3>
+              <p class="fun-card-body">
+                “I’ll just fix this one print statement and go to sleep at 11:00 PM.” It is now 2:47 AM, I am redesigning my entire color palette, and listening to Bulgarian synthwave.
+              </p>
+            </div>
+            <div class="fun-footer-verdict">
+              <span>Verdict:</span> <strong>Zero regrets. It looks aesthetic.</strong>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER & FINAL STATEMENT
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      
+      <p class="final-quote">
+        “Still learning. <span>Still laughing.</span> Still figuring it out.”
+      </p>
+
+      <ul class="footer-nav">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#goal">Life Goal</a></li>
+        <li><a href="#fun">Freshman Lore</a></li>
+      </ul>
+
+      <a href="#top" class="back-to-top" aria-label="Back to top">
+        <span>Back to Top</span>
+        <span>↑</span>
+      </a>
+
+      <p class="copyright">
+        Designed & coded with pure HTML5 & CSS3 • <strong>Riya</strong> • First-Year B.Tech CS & AI • Rishihood University
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
+
